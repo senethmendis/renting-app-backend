@@ -1,12 +1,15 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
+const errorHandler = require('./middlewares/errorHandler');
+
 const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
+
 const userRoutes = require('./routes/users');
 const itemsRoutes = require('./routes/items');
-const errorHandler = require('./middlewares/errorHandler');
+const renterRoutes = require('./routes/renter');
 
 app.use(bodyParser.json());
 app.use(express.json());
@@ -17,6 +20,7 @@ connectDB();
 
 app.use('/user', userRoutes);
 app.use('/items', itemsRoutes);
+app.use('/renter', renterRoutes);
 
 app.get('/', (req, res) => {
    res.send('<h1>Hello, Express.js Server!</h1>');
