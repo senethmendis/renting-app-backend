@@ -18,9 +18,9 @@ app.use(cors());
 // Connect to MongoDB
 connectDB();
 
-app.use('/user', userRoutes);
-app.use('/items', itemsRoutes);
-app.use('/renter', renterRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/items', itemsRoutes);
+app.use('/api/renter', renterRoutes);
 
 app.get('/', (req, res) => {
    res.send('<h1>Hello, Express.js Server!</h1>');
